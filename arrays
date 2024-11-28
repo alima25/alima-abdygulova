@@ -1,0 +1,31 @@
+import random
+
+box_locations = random.sample(range(1, 8), 3)  
+box_weights = [random.randint(200, 300) for _ in range(3)]  
+while sum(box_weights) != 713:
+    box_weights = [random.randint(200, 300) for _ in range(3)]
+
+def move_boxes(locations):
+    return random.sample(range(1, 8), 3)
+
+print("Martian Cargo Recovery Program")
+print("Hint: The cargo is buried between kilometers 1 and 7.")
+print("Your goal is to find all 3 boxes and verify their combined weight is 713 kg.")
+
+while True:
+    guesses = []
+    for i in range(3):
+        guess = int(input(f"Enter the kilometer mark for box {i + 1}: "))
+        guesses.append(guess)
+    
+    if sorted(guesses) == sorted(box_locations):
+        total_weight = sum(box_weights)
+        print(f"Congratulations! You found all the boxes. Their combined weight is {total_weight} kg.")
+        if total_weight == 713:
+            print("Mission successful! The Martians retrieved their cargo.")
+            break
+        else:
+            print("Weight mismatch! The cargo was not correctly identified.")
+    else:
+        print("Incorrect locations! The boxes have moved.")
+        box_locations = move_boxes(box_locations)

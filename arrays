@@ -1,9 +1,11 @@
 import random
 
 box_locations = random.sample(range(1, 8), 3)  
-box_weights = [random.randint(200, 300) for _ in range(3)]  
+box_weights = [random.randint(1, 711) for _ in range(3)]  
 while sum(box_weights) != 713:
-    box_weights = [random.randint(200, 300) for _ in range(3)]
+    box_weights = [random.randint(1, 711) for _ in range(3)]
+
+print(f"DEBUG: The correct locations are {box_locations}") #to have a chance of success
 
 def move_boxes(locations):
     return random.sample(range(1, 8), 3)
